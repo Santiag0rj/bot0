@@ -17,6 +17,18 @@ client.on("ready", () => {
   // docs refer to as the "ClientUser".
   client.user.setActivity('ALFA RUST');
 });
+//heroku
+const express = require('express');
+const path = require('path');
+const PORT = process.env.PORT || 5000;
+
+express()
+.use(express.static(path.join(__dirname, 'public')))
+.set('views', path.join(__dirname, 'public'))
+.set('view engine', 'ejs')
+.get('/', (req, res) => res.render('pages/index'))
+.listen(port, () => console.log('Listening on ${ PORT }'))
+
 
 client.on("guildCreate", guild => {
   // This event triggers when the bot joins a guild.
